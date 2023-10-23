@@ -1,9 +1,13 @@
 <?php
-    // class Goodbye {
-    //     const LEAVING_MESSAGE = "Thank you for visiting W3Schools.com!";
-    //   }
+
+    class Hello {
+        const LEAVING_MESSAGE = "Hello welcome in  W3Schools.com!";
+      }
       
-    //   echo Goodbye::LEAVING_MESSAGE;
+      echo Hello::LEAVING_MESSAGE;
+
+
+
       class Goodbye {
         const LEAVING_MESSAGE = "Thank you for visiting W3Schools.com!";
         public function byebye() {
