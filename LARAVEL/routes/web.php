@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -98,9 +99,38 @@ Route::get('/', function () {
 
 Route::prefix('/blog')->name('blog.')->group(function (){
     Route::get('/', function (Request $request) {
+
+
+        //pour ajouter les post sur la base de donnee
+
+        // $post = new Post();
+        // $post->title = 'Mon premier article';
+        // $post->slug = 'Mon-premier-article';
+        // $post->content = 'Mon content';
+        // $post->save();
+        // return $post;
+
+        //pour aficher tout les donnee sur la database
+        // return Post::all();
+        //display == [{"id":1,"title":"Mon premier article","slug":"Mon-premier-article","content":"Mon content","created_at":"2023-10-24T21:33:42.000000Z","updated_at":"2023-10-24T21:33:42.000000Z"}]
+
+        //pour aficher une spesific donnee sur la database
+        // return Post::all(['id', 'title']);
+        //display ==  [{"id":1,"title":"Mon premier article"}]
+
+
+        //pour aficher une spesific donnee avec une ID
+        // return Post::find(1);
+        // {"id":1,"title":"Mon premier article","slug":"Mon-premier-article","content":"Mon content","created_at":"2023-10-24T21:33:42.000000Z","updated_at":"2023-10-24T21:33:42.000000Z"}
+
+
+        //pour aficher des donnee avec une pagination
+        return Post::paginate(1);
+        // {"current_page":1,"data":[{"id":1,"title":"Mon premier article","slug".......
+        
         return [
             "link" => \route('blog.show', ['slug' => 'article', 'id' => 13]),
-            // display =  {"link":"http:\/\/127.0.0.1:8000\/blog\/article-13"}
+            // display == {"link":"http:\/\/127.0.0.1:8000\/blog\/article-13"}
         
         ];
 
