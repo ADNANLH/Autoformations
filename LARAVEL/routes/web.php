@@ -132,9 +132,30 @@ Route::prefix('/blog')->name('blog.')->group(function (){
         // return Post::where('id', '>' , 0)->limit(1)->get() ; // OR return Post::where('id', '>' , 0)->first();
 
         //pour modifier une element avec un ID
-        $post = Post::find(1);
-        $post->title = 'New title';
-        $post->save();
+        // $post = Post::find(1);
+        // $post->title = 'New title';
+        // $post->save();
+
+        //pour supprimer une element 
+        // $post->delete();
+
+        //pour créer une nouvelle element 
+         $post = Post::create([
+            'title' => 'create title',
+            'slug' => 'create-slug',
+            'content' => 'create content',
+         ]);
+
+         
+         //pour modifier
+         $post = Post::where('id', '>' , 0)->update([
+            'title' => 'create title',
+            'slug' => 'create-slug',
+            'content' => 'create content',
+         ]);
+
+
+
         
         return [
             "link" => \route('blog.show', ['slug' => 'article', 'id' => 13]),
