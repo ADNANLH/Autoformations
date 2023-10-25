@@ -125,8 +125,16 @@ Route::prefix('/blog')->name('blog.')->group(function (){
 
 
         //pour aficher des donnee avec une pagination
-        return Post::paginate(1);
+        // return Post::paginate(1);
         // {"current_page":1,"data":[{"id":1,"title":"Mon premier article","slug".......
+
+        //pour aficher une specific donne avec une id
+        // return Post::where('id', '>' , 0)->limit(1)->get() ; // OR return Post::where('id', '>' , 0)->first();
+
+        //pour modifier une element avec un ID
+        $post = Post::find(1);
+        $post->title = 'New title';
+        $post->save();
         
         return [
             "link" => \route('blog.show', ['slug' => 'article', 'id' => 13]),
